@@ -40,7 +40,7 @@ public class BusTracking extends FragmentActivity implements OnMapReadyCallback,
     private DatabaseReference reference;
     private LocationManager manager;
 
-    private  final int MIN_TIME = 8000;
+    private  final int MIN_TIME = 1500;
     private final int MIN_DISTANCE = 1;
 
     private Marker myMarker;

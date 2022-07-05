@@ -2,9 +2,11 @@ package com.company.polarisdriver;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -31,7 +33,22 @@ public class DriverLogin extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        this.finish();
+        AlertDialog.Builder alert = new AlertDialog.Builder(DriverLogin.this);
+        alert.setTitle("Exit App");
+        alert.setMessage("Do you want to exit app?");
+        alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finishAffinity();
+            }
+        });
+        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        alert.show();
     }
 
     @Override
@@ -58,7 +75,10 @@ public class DriverLogin extends AppCompatActivity {
         });
 
         mAuth = FirebaseAuth.getInstance();
+
     }
+
+
 
     private void userLogin() {
 
